@@ -81,4 +81,17 @@ class HomeViewController: UIViewController , UITableViewDelegate,UITableViewData
             StoreManager.shared.save(value: IRepo.shared.products, key: StorageKeys.users)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        IRepo.shared.rowIndex = indexPath.row
+        tableViewInstance.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        performSegue(withIdentifier: Routes.goDetail.rawValue, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let currentIndex:Int? = tableViewInstance.indexPathForSelectedRow?.row
+        if let vc = segue.destination as? DetailViewController{
+            if(currentIndex != nil) {vc.getDescription(description: Array(IRepo.shared.products.values)[currentIndex!])}
+        }
+    }
 }

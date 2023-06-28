@@ -9,3 +9,6 @@ import Foundation
 
 
 enum StorageKeys:String{case users}
+
+
+enum Routes:String{case goDetail}

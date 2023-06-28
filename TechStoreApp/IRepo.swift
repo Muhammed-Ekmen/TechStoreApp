@@ -19,4 +19,6 @@ class IRepo{
         "Dell XPS" : "Computer",
         "Samsung S23" : "Phone"
     ]
+    
+    var rowIndex:Int?
 }
